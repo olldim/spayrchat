@@ -1,0 +1,10 @@
+{
+  "dist\\Spayr-Windows.zip": {
+    "bytes": 22841093,
+    "sha256": "baec9410d102de1a3a668ae7bb338cb5b6c20aaff730a6d49e6fe21c8366034c"
+  },
+  "SERVER\\spayr-server.exe": {
+    "bytes": 12416000,
+    "sha256": "e22dea075d63c45ebff5f90219aae81c79ccde43fbbb6bbe23743262b4930d7b"
+  }
+}
