@@ -36,8 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_localizations:
     sdk: flutter
-  flutter_webrtc: ^1.6.1
-  flutter_secure_storage: ^11.0.0
+  flutter_webrtc: 1.6.1
+  # v11 requires android-37; Codemagic currently installs android-37.0 instead.
+  # Keep the API 36 release until the SDK/AGP target naming is compatible.
+  flutter_secure_storage: 10.3.1
   shared_preferences: ^2.5.3
 
 dev_dependencies:

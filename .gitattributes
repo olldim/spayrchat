@@ -1,0 +1,5 @@
+# CI scripts run on macOS even when this checkout is edited on Windows.
+*.sh text eol=lf
+*.yaml text eol=lf
+*.xcconfig text eol=lf
+*.cmd text eol=crlf

@@ -1,0 +1,49 @@
+# Select one of these workflows in Codemagic's YAML configuration mode.
+# Both workflows build artifacts only; no store publishing is configured.
+workflows:
+  android:
+    name: Spayr - Android APK and AAB
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      flutter: 3.44.1
+      java: 17
+    scripts:
+      - name: Prepare a clean Flutter build
+        script: bash ci/prepare.sh
+      - name: Install Android SDK 36
+        script: |
+          set -euo pipefail
+          sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0" 2>&1 | tee build/ci-logs/android-sdk.log
+          java -version 2>&1 | tee build/ci-logs/java.log
+      - name: Analyze and test
+        script: bash ci/check.sh
+      - name: Build Android artifacts
+        script: |
+          set -euo pipefail
+          flutter build apk --release --no-pub --verbose 2>&1 | tee build/ci-logs/android-apk.log
+          flutter build appbundle --release --no-pub --verbose 2>&1 | tee build/ci-logs/android-aab.log
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
+      - build/app/outputs/bundle/release/*.aab
+      - build/app/outputs/mapping/release/mapping.txt
+      - build/ci-logs/*.log
+
+  ios-unsigned:
+    name: Spayr - unsigned IPA for AltStore or Sideloadly
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      flutter: 3.44.1
+      xcode: "26.3"
+    scripts:
+      - name: Prepare a clean Flutter build
+        script: bash ci/prepare.sh
+      - name: Analyze and test
+        script: bash ci/check.sh
+      - name: Build unsigned iOS app and package IPA
+        script: bash ci/build_ios_unsigned.sh
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - build/ci-logs/*.log
+      - build/ci-logs/*.zip

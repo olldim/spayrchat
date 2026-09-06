@@ -2,6 +2,8 @@
 
 Невеликий месенджер українською з Flutter-клієнтом для **iOS, Android, Windows і macOS** та окремим сервером у **SERVER**.
 
+**Збірка Android та непідписаної IPA без власного Mac:** готові workflows у `codemagic.yaml`, покрокові дії — у [CODEMAGIC.md](CODEMAGIC.md).
+
 ## Швидкий запуск на Windows
 
 1. Запустіть **`SERVER/spayr-server.exe`** подвійним кліком. Або відкрийте `SERVER/start.cmd`, щоб вікно залишилося відкритим у разі помилки.

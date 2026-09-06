@@ -1,0 +1,86 @@
+== Building for Android ==
+
+> flutter build appbundle --release
+Running Gradle task 'bundleRelease'...                          
+Warning: The plugin flutter_secure_storage requires Android SDK version 37 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_webrtc
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Checking the license for package Android SDK Platform 36 in /usr/local/share/android-sdk/licenses
+License for package Android SDK Platform 36 accepted.
+Preparing "Install Android SDK Platform 36 (revision 2)".
+"Install Android SDK Platform 36 (revision 2)" ready.
+Installing Android SDK Platform 36 in /usr/local/share/android-sdk/platforms/android-36
+"Install Android SDK Platform 36 (revision 2)" complete.
+"Install Android SDK Platform 36 (revision 2)" finished.
+[=========                              ] 25%                                   
+Checking the license for package Android SDK Platform 37.0 in /usr/local/share/android-sdk/licenses
+License for package Android SDK Platform 37.0 accepted.
+Preparing "Install Android SDK Platform 37.0 (revision 2)".
+"Install Android SDK Platform 37.0 (revision 2)" ready.
+Installing Android SDK Platform 37.0 in /usr/local/share/android-sdk/platforms/android-37.0
+"Install Android SDK Platform 37.0 (revision 2)" complete.
+"Install Android SDK Platform 37.0 (revision 2)" finished.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Could not determine the dependencies of task ':flutter_secure_storage:compileReleaseJavaWithJavac'.
+> Failed to find target with hash string 'android-37' in: /usr/local/share/android-sdk
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to generate a Build Scan (Powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 33s
+Running Gradle task 'bundleRelease'...                            154.7s
+Gradle task bundleRelease failed with exit code 1
+
+
+Build failed :|
+Failed to build for Android
+
+== Building for iOS ==
+
+> flutter build ios --release --no-codesign
+Warning: Building for device with codesigning disabled. You will have to manually codesign before deploying to device.
+Building com.example.spayrChat for device (ios-release)...
+Updating minimum iOS deployment target to 15.0.
+Upgrading project.pbxproj
+Upgrading AppFrameworkInfo.plist
+Running Xcode build...                                          
+Xcode build done.                                           59.0s
+Failed to build iOS app
+════════════════════════════════════════════════════════════════════════════════
+Building a deployable iOS app requires a selected Development Team with a 
+Provisioning Profile. Please ensure that a Development Team is selected by:
+  1- Open the Flutter project's Xcode target with
+       open ios/Runner.xcworkspace
+  2- Select the 'Runner' project in the navigator then the 'Runner' target
+     in the project settings
+  3- Make sure a 'Development Team' is selected under Signing & Capabilities > Team. 
+     You may need to:
+         - Log in with your Apple ID in Xcode first
+         - Ensure you have a valid unique Bundle ID
+         - Register your device with your Apple Developer Account
+         - Let Xcode automatically provision a profile for your app
+  4- Build or run your project again
+
+For more information, please visit:
+  https://flutter.dev/to/ios-development-team
+
+Or run on an iOS simulator without code signing
+════════════════════════════════════════════════════════════════════════════════
+Encountered error while building for device.
+
+
+Build failed :|
+Failed to build for iOS
