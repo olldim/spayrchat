@@ -6,7 +6,8 @@ plugins {
 
 android {
     namespace = "com.example.spayr_chat"
-    compileSdk = flutter.compileSdkVersion
+    // Matches flutter_secure_storage 10.3.1 and the pinned Codemagic image.
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
